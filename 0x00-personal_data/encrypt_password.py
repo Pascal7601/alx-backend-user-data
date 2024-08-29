@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+encrypting your password
+"""
+
 import bcrypt
 
 def hash_password(password: str)-> str:
