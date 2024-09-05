@@ -1,1 +1,11 @@
-{"a0f24eb0-3f2f-4957-93bc-3d0f0166fa97": {"id": "a0f24eb0-3f2f-4957-93bc-3d0f0166fa97", "created_at": "2024-09-05T09:51:44", "updated_at": "2024-09-05T09:51:44", "email": "pascalia@gmail.com", "_password": "309ac031dfa3b55df803186e0d7d698d010d385653cb8334a937fc0e6002c304", "first_name": "Pascalia", "last_name": "Ndubia"}}
+{
+  "6b0793cd-e115-45da-8431-4fb1fa372ba4": {
+    "id": "6b0793cd-e115-45da-8431-4fb1fa372ba4",
+    "created_at": "2024-09-05T16:26:05",
+    "updated_at": "2024-09-05T16:26:05",
+    "email": "bobsession@hbtn.io",
+    "_password": "7a321db83885ebbe8358bc1160c803af6cc70c80aa8f750eeb9d21d5f8c75967",
+    "first_name": null,
+    "last_name": null
+  }
+}
