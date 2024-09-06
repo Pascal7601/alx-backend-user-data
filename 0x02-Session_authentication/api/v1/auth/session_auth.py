@@ -91,6 +91,13 @@ def login_route():
     response.set_cookie(session_name, session_id)
 
     return response, 200
+
+
+def destroy_session(self, request=None):
+    """
+    deletes a session when the user logs out
+    """
+    
     
 
 
