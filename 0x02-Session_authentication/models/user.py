@@ -3,7 +3,7 @@
 """
 import hashlib
 from models.base import Base
-import base64
+
 
 class User(Base):
     """ User class
@@ -57,15 +57,3 @@ class User(Base):
             return "{}".format(self.last_name)
         else:
             return "{} {}".format(self.first_name, self.last_name)
-
-
-# if __name__ == '__main__':
-#     # user1 = User()
-#     first_name = 'Pascalia'
-#     last_name = 'Ndubia'
-#     email = 'pascalia@gmail.com'
-#     password = 'pascalia123'
-#     email_pass = '{}:{}'.format(email, password)
-#     decode_pass_email = base64.b64encode(email_pass.encode('utf-8'))
-#     print(decode_pass_email.decode())
-#     # user1.save()

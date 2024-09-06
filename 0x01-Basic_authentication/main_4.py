@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+""" Main 4
+"""
 from api.v1.auth.basic_auth import BasicAuth
 
 a = BasicAuth()
