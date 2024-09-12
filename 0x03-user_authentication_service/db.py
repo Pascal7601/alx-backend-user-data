@@ -7,6 +7,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 from user import Base, User
 
 
@@ -31,7 +33,7 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email: str, hashed_password: str):
+    def add_user(self, email: str, hashed_password: str) -> User:
         """
         adds a user to the database
         """
@@ -39,3 +41,23 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
+
+    def find_user_by(self, **kwargs):
+        """
+        Returns the first user found based on the provided keyword arguments.
+        Raises NoResultFound if no user is found.
+        Raises InvalidRequestError for invalid query arguments.
+        """
+        try:
+            # Dynamically filter by the keyword arguments
+            print(f"Searching for user with filters: {kwargs}")
+            user = self._session.query(User).filter_by(**kwargs).one()
+            return user
+        except NoResultFound:
+            # No user found with the provided arguments
+            print(f"No user found with : {kwargs}")
+            raise NoResultFound(f"No user found with  arguments: {kwargs}")
+        except InvalidRequestError:
+            # Raised for incorrect query parameters
+            print(f"Invalid query arguments: {kwargs}")
+            raise InvalidRequestError(f"Invalid query arguments: {kwargs}")
