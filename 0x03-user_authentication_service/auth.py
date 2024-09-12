@@ -5,6 +5,7 @@ file to handle password encryption
 import bcrypt
 from user import User
 from db import DB
+from sqlalchemy.exc import NoResultFound
 
 
 def _hash_password(password: str) -> bytes:
@@ -31,7 +32,7 @@ class Auth:
         try:
             self._db.find_user_by(email=email)
             raise ValueError(f"User {email} already exists")
-        except:
+        except NoResultFound:
             hash_pwd = _hash_password(password)
             new_user = self._db.add_user(email, hash_pwd)
             return new_user
