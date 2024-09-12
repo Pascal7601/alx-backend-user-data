@@ -27,6 +27,9 @@ def add_user():
     email = request.form['email']
     password = request.form['password']
 
+    if not email or not password:
+        return jsonify({"message": "please provide username and pass"}), 400
+
     try:
         user = AUTH.register_user(email, password)
         return jsonify({"email": email, "message": "user created"}), 201
@@ -35,4 +38,4 @@ def add_user():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="0.0.0.0", port=5000)
