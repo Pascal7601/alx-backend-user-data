@@ -36,7 +36,7 @@ def add_user():
     except ValueError as e:
         return jsonify({"message": "email already registered"}), 400
 
-@app.route('/sessions', methods=['POST'], strict_slashes=True)
+@app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login():
     """
     define the login functionality
