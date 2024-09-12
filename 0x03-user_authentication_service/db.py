@@ -61,3 +61,15 @@ class DB:
             # Raised for incorrect query parameters
             print(f"Invalid query arguments: {kwargs}")
             raise InvalidRequestError(f"Invalid query arguments: {kwargs}")
+
+    def update_user(self, user_id, **kwargs) -> None:
+        """
+        updates a user based on their id
+        """
+        user = self.find_user_by(id=user_id)
+        for k, v in kwargs.items():
+            if hasattr(user, k):
+                setattr(user, k, v)
+            else:
+                raise ValueError(f"Attribute {k} does not exist")
+        self._session.commit()
