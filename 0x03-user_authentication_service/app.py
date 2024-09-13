@@ -80,7 +80,22 @@ def logout():
     AUTH.destroy_session(user.id)
     return redirect(url_for('home'))
 
+@app.route('/profile', strict_slashes=False)
+def profile():
+    """
+    get user profile which will be done
+    when the user logs in is when they will be
+    able to view their profile
+    """
+    session_id = request.cookies.get("session_id")
+    if session_id is None:
+        abort(403)
 
+    user = AUTH.get_user_from_session_id(session_id)
+    if user is None:
+        abort(403)
+
+    return jsonify({"email": user.email}), 200
 
 
 if __name__ == '__main__':
